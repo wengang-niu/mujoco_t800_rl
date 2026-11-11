@@ -1,3 +1,5 @@
 {
-    "cmake.sourceDirectory": "/home/root123/workspace/source/mujoco_t800_rl/engineai_robotics_native_sdk"
+    "cmake.sourceDirectory": "/home/root123/workspace/source/mujoco_t800_rl/engineai_robotics_native_sdk",
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
 }

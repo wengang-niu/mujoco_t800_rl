@@ -14,17 +14,7 @@
 > [!WARNING]
 > 本教程第一阶段仅用于 **MuJoCo 仿真**。不要把教程参数或策略直接用于实体机器人。实体机器人还需要急停、吊架、功率限制、通信失效保护和完整的人工安全审查。
 
-```mermaid
-flowchart LR
-    A[MuJoCo 模型] --> B[Joint 与 Actuator]
-    B --> C[原始力矩]
-    C --> D[PD、PID 与前馈]
-    D --> E[T800 PD 站立]
-    E --> F[Gymnasium 环境]
-    F --> G[PPO 单关节]
-    G --> H[PPO 抗扰动站立]
-    H --> I[理解 SDK 部署契约]
-```
+![T800 教程学习路径](tutorials/images/learning-path.svg)
 
 阅读方式：前半段建立机器人与底层控制基础，后半段在同一套 PD 安全层之上学习强化学习，最后再映射回 SDK。
 
@@ -51,24 +41,27 @@ flowchart LR
 
 ## 环境安装
 
-建议使用 Python 3.10 或更高版本，并创建独立虚拟环境：
+本教程使用 Conda 环境 `t800` 和 Python 3.12。以下命令从仓库根目录执行：
 
 ```bash
 cd /path/to/mujoco_t800_rl
-python3 -m venv .venv
-source .venv/bin/activate
+conda create -n t800 python=3.12
+conda activate t800
 python -m pip install --upgrade pip
 python -m pip install mujoco numpy gymnasium stable-baselines3 torch
 ```
 
-检查版本：
+检查 Python、pip 和基础依赖版本：
 
 ```bash
-python -c "import mujoco; print('MuJoCo:', mujoco.__version__)"
-python -c "import gymnasium, stable_baselines3; print('Gymnasium:', gymnasium.__version__); print('SB3:', stable_baselines3.__version__)"
+python --version
+python -m pip --version
+python -c "import mujoco, numpy, gymnasium, stable_baselines3, torch; print('MuJoCo:', mujoco.__version__); print('NumPy:', numpy.__version__); print('Gymnasium:', gymnasium.__version__); print('SB3:', stable_baselines3.__version__); print('PyTorch:', torch.__version__)"
 ```
 
-MuJoCo 官方 Python wheel 自带 MuJoCo 运行库，一般不需要另行下载旧版 `mujoco-py`。
+`python --version` 应显示 Python 3.12，`python -m pip --version` 的路径应位于 `t800` 环境中。MuJoCo 官方 Python wheel 自带 MuJoCo 运行库，一般不需要另行下载旧版 `mujoco-py`。
+
+TensorBoard 和 PyYAML 不属于基础依赖；仅在对应章节需要相关功能时按说明安装。
 
 ## 章节目录
 

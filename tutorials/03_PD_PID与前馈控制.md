@@ -32,25 +32,7 @@ tau = kp * e + kd * edot + tau_ff
 
 下面的框图展示四条力矩分量如何汇合，以及关节状态如何闭环反馈：
 
-```mermaid
-flowchart LR
-    QD[期望位置 q_des] --> EP[位置误差]
-    Q[实际位置 q] --> EP
-    VD[期望速度 qd_des] --> EV[速度误差]
-    V[实际速度 qd] --> EV
-    EP --> P[P 项]
-    EP --> I[积分器与 I 项]
-    EV --> D[D 项]
-    FF[前馈力矩 tau_ff] --> SUM[力矩求和]
-    P --> SUM
-    I --> SUM
-    D --> SUM
-    SUM --> LIMIT[力矩限幅]
-    LIMIT --> MOTOR[MuJoCo motor]
-    MOTOR --> ROBOT[关节动力学]
-    ROBOT --> Q
-    ROBOT --> V
-```
+![PID 与前馈闭环控制框图](images/pid-feedforward-loop.svg)
 
 **读图方法：**P、I、D 都依赖反馈误差；前馈不等待误差出现，直接进入力矩求和。最终力矩必须先限幅，再写入 `data.ctrl`。当 `ki=0` 时，积分支路关闭，框图就退化为 SDK 使用的 PD + 前馈。
 
@@ -67,19 +49,7 @@ flowchart LR
 1. `integral` 本身限幅；
 2. 若候选输出已饱和，而且当前误差会让饱和更严重，则暂停积分。
 
-```mermaid
-flowchart TD
-    E[当前误差] --> CAND[计算候选积分]
-    CAND --> ILIMIT[积分状态限幅]
-    ILIMIT --> TCAND[计算候选力矩]
-    TCAND --> SAT{输出是否饱和}
-    SAT -- 否 --> ACCEPT[接受候选积分]
-    SAT -- 是 --> WORSE{误差是否加重饱和}
-    WORSE -- 否 --> ACCEPT
-    WORSE -- 是 --> HOLD[保持原积分]
-    ACCEPT --> OUT[重新计算并限幅输出]
-    HOLD --> OUT
-```
+![条件积分防饱和流程](images/anti-windup.svg)
 
 **读图方法：**积分限幅约束积分器本身；条件积分则观察执行器是否饱和。只有“已经饱和且继续积分会推得更远”时才冻结积分，误差正在帮助退出饱和时仍允许积分更新。
 

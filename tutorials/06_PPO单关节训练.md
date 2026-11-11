@@ -25,12 +25,17 @@
 推理：固定网络参数，obs -> action
 ```
 
-## 3. 安装
+## 3. 环境准备
+
+先按[第 00 章](00_安装与仿真安全.md)准备并激活 Conda 环境 `t800`。本章的基础依赖已包含在该环境中，不需要重复安装。
+
+训练程序配置了 TensorBoard 日志，因此运行本章训练前需额外安装该章节的可选依赖：
 
 ```bash
-python -m pip install "mujoco>=3.1" "gymnasium>=0.29" \
-  "stable-baselines3>=2.3" "torch>=2.1" numpy
+python -m pip install tensorboard
 ```
+
+TensorBoard 不属于课程的基础依赖。
 
 ## 4. 完整训练程序
 
@@ -238,7 +243,7 @@ if __name__ == "__main__":
 python /tmp/train_joint_ppo.py
 ```
 
-可选查看 TensorBoard：
+安装了可选依赖 TensorBoard，并且训练已生成日志后，可以运行：
 
 ```bash
 tensorboard --logdir /tmp/joint_ppo_output/tensorboard

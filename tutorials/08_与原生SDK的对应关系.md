@@ -262,7 +262,7 @@ if __name__ == "__main__":
     main()
 ```
 
-安装 YAML 解析依赖并运行：
+本章的只读契约检查脚本需要可选的 YAML 解析依赖 PyYAML；它不属于课程基础环境。安装后运行：
 
 ```bash
 python -m pip install PyYAML
