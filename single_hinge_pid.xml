@@ -1,0 +1,16 @@
+<mujoco model="single_hinge">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast"/>
+  <worldbody>
+    <body name="link" pos="0 0 1">
+      <joint name="hinge" type="hinge" axis="0 1 0"
+             range="-1.5708 1.5708" damping="0.05"/>
+      <geom type="capsule" fromto="0 0 0 0 0 -0.6"
+            size="0.04" mass="1" rgba="0.2 0.6 0.9 1"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="hinge_motor" joint="hinge"
+           ctrllimited="true" ctrlrange="-8 8"/>
+  </actuator>
+</mujoco>
