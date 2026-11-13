@@ -173,7 +173,7 @@ if __name__ == "__main__":
     # 自检 2：吞吐量实测（训练每秒能跑多少 env.step）
     env.reset()
     n_bench = 500
-    action = np.zeros(12)
+    action = np.zeros(len(ACTION_LEG_IDX))
     t0 = time.time()
     for _ in range(n_bench):
         env.step(action)

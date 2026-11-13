@@ -15,8 +15,11 @@ from __future__ import annotations
 
 import argparse
 import importlib
+import os
+import time
 
 import mujoco
+import mujoco.viewer  # MuJoCo 4.0 需显式导入，否则 mujoco.viewer 属性不存在
 import numpy as np
 
 import t800_common as tc
@@ -41,9 +44,9 @@ def apply_disturbance(env, t: int, force: float, period: float) -> None:
     env.data.xfrc_applied[root_body_id(env.model), :3] = [f, 0.0, 0.0]
 
 
-def run_episode(env, ppo, disturb: bool, force: float, period: float):
+def run_episode(env, ppo, disturb: bool, force: float, period: float, seed: int = 0):
     """跑一回合，返回 (总奖励, 存活步数, 是否站满, 最小高度, 最大倾角)。"""
-    obs, _ = env.reset()
+    obs, _ = env.reset(seed=seed)
     min_h = tc.base_height(env.data)
     max_tilt = 0.0
     total = 0.0
@@ -63,10 +66,10 @@ def run_episode(env, ppo, disturb: bool, force: float, period: float):
     return total, env.max_steps, True, min_h, max_tilt
 
 
-def eval_headless(env, ppo, episodes: int, disturb: bool, force: float, period: float):
+def eval_headless(env, ppo, episodes: int, disturb: bool, force: float, period: float, seed: int = 0):
     lens, success, min_hs, max_tilts, rets = [], 0, [], [], []
-    for _ in range(episodes):
-        ret, length, ok, min_h, max_tilt = run_episode(env, ppo, disturb, force, period)
+    for i in range(episodes):
+        ret, length, ok, min_h, max_tilt = run_episode(env, ppo, disturb, force, period, seed=seed + i)
         lens.append(length); min_hs.append(min_h); max_tilts.append(max_tilt); rets.append(ret)
         success += int(ok)
 
@@ -80,11 +83,13 @@ def eval_headless(env, ppo, episodes: int, disturb: bool, force: float, period: 
     return success / episodes
 
 
-def run_viewer(env, ppo, disturb: bool, force: float, period: float):
+def run_viewer(env, ppo, disturb: bool, force: float, period: float, seconds: float):
     env.reset()
+    t0 = time.monotonic()
+    n_episodes = 1
     with mujoco.viewer.launch_passive(env.model, env.data) as viewer:
         step = 0
-        while viewer.is_running() and env.data.time < env.max_steps * env.model.opt.timestep * env.frame_skip:
+        while viewer.is_running() and (time.monotonic() - t0) < seconds:
             if disturb:
                 apply_disturbance(env, step, force, period)
             obs = env._obs()
@@ -92,10 +97,17 @@ def run_viewer(env, ppo, disturb: bool, force: float, period: float):
             obs, reward, terminated, truncated, _ = env.step(action)
             viewer.sync()
             step += 1
-            if terminated:
+            if terminated or truncated:          # 摔倒或站满 10s 都开新回合
                 env.reset()
                 step = 0
-    print(f"viewer 结束：模拟时长 {env.data.time:.2f}s")
+                n_episodes += 1
+    print(f"viewer 结束：运行 {time.monotonic() - t0:.1f}s（目标 {seconds:.0f}s），共 {n_episodes} 回合", flush=True)
+    # MuJoCo 4.0 passive viewer 退出时 GLFW 会被双重 terminate（viewer.py 里
+    # atexit.register(glfw.terminate) 未反注册 + simulate.destroy() 又终止一次），
+    # 在解释器退出阶段触发「GLFW library is not initialized」并段错误。
+    # 这里等清理线程结束后直接退出进程，跳过 atexit 里多余的 glfw.terminate。
+    time.sleep(0.5)
+    os._exit(0)
 
 
 def main() -> None:
@@ -106,6 +118,8 @@ def main() -> None:
     p.add_argument("--disturb", action="store_true", help="施加周期性水平扰动力")
     p.add_argument("--force", type=float, default=30.0, help="扰动力幅值 N")
     p.add_argument("--period", type=float, default=1.0, help="扰动周期 s")
+    p.add_argument("--seed", type=int, default=0, help="评估种子（每回合 seed+i，保证可复现）")
+    p.add_argument("--seconds", type=float, default=600.0, help="viewer 观看时长（真实秒，默认 600=10 分钟）")
     args = p.parse_args()
 
     env = make_env()
@@ -114,9 +128,9 @@ def main() -> None:
     print(f"已加载策略：{args.ckpt}")
 
     if args.viewer:
-        run_viewer(env, ppo, args.disturb, args.force, args.period)
+        run_viewer(env, ppo, args.disturb, args.force, args.period, args.seconds)
     else:
-        eval_headless(env, ppo, args.episodes, args.disturb, args.force, args.period)
+        eval_headless(env, ppo, args.episodes, args.disturb, args.force, args.period, args.seed)
 
 
 if __name__ == "__main__":

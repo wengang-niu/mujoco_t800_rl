@@ -14,8 +14,11 @@
 from __future__ import annotations
 
 import argparse
+import os
+import time
 
 import mujoco
+import mujoco.viewer  # MuJoCo 4.0 需显式导入，否则 mujoco.viewer 属性不存在
 import numpy as np
 
 import t800_common as tc
@@ -66,7 +69,11 @@ def run_viewer(model: mujoco.MjModel, data: mujoco.MjData, seconds: float) -> No
             mujoco.mj_step(model, data)
             viewer.sync()
     print(f"simulated time : {data.time:.3f} s")
-    print(f"base xyz       : {np.round(data.qpos[:3], 4)}")
+    print(f"base xyz       : {np.round(data.qpos[:3], 4)}", flush=True)
+    # MuJoCo 4.0 passive viewer 退出时 GLFW 会被双重 terminate，解释器退出阶段会段错误。
+    # 等清理线程结束后直接退出进程，跳过 atexit 里多余的 glfw.terminate。
+    time.sleep(0.5)
+    os._exit(0)
 
 
 def parse_args() -> argparse.Namespace:
