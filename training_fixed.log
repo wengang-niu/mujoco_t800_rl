@@ -1,0 +1,12 @@
+device=cpu  iters=400  n_steps=2048
+iter    20 | mean_ep_return=   224.1 mean_len=  80.9 | policy_loss= 0.0076 value_loss=17.8063 entropy=11.2047 | 1.5s
+iter    40 | mean_ep_return=   300.7 mean_len= 118.9 | policy_loss=-0.0044 value_loss= 9.3202 entropy=11.2301 | 1.7s
+iter    60 | mean_ep_return=   335.4 mean_len= 124.7 | policy_loss= 0.0016 value_loss=291.1899 entropy=11.1920 | 1.4s
+iter    80 | mean_ep_return=   268.5 mean_len= 134.1 | policy_loss= 0.0146 value_loss=45.0453 entropy=11.2336 | 1.5s
+iter   100 | mean_ep_return=   286.6 mean_len= 114.6 | policy_loss= 0.0033 value_loss= 5.8107 entropy=11.3964 | 1.5s
+iter   120 | mean_ep_return=   235.4 mean_len=  95.8 | policy_loss=-0.0058 value_loss=15.5932 entropy=11.4372 | 1.5s
+iter   140 | mean_ep_return=   386.4 mean_len= 133.2 | policy_loss=-0.0010 value_loss=88.5503 entropy=11.5164 | 1.4s
+iter   160 | mean_ep_return=   391.8 mean_len= 136.7 | policy_loss=-0.0004 value_loss=76.2161 entropy=11.6061 | 1.4s
+iter   180 | mean_ep_return=   257.9 mean_len=  93.8 | policy_loss= 0.0017 value_loss=79.1356 entropy=11.5756 | 1.4s
+iter   200 | mean_ep_return=   237.2 mean_len=  84.4 | policy_loss=-0.0005 value_loss=71.9474 entropy=11.4930 | 1.6s
+iter   220 | mean_ep_return=   411.2 mean_len= 142.5 | policy_loss=-0.0027 value_loss=36.7898 entropy=11.4429 | 1.5s

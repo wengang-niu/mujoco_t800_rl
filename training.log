@@ -1,0 +1,77 @@
+device=cpu  iters=1500  n_steps=2048
+iter    20 | mean_ep_return=   296.0 mean_len=  94.1 | policy_loss= 0.0081 value_loss=68.4643 entropy=11.2911 | 1.4s
+iter    40 | mean_ep_return=   319.3 mean_len= 105.6 | policy_loss= 0.0074 value_loss=84.5751 entropy=11.2868 | 1.4s
+iter    60 | mean_ep_return=   364.8 mean_len= 114.3 | policy_loss= 0.0019 value_loss=332.7472 entropy=11.3777 | 1.5s
+iter    80 | mean_ep_return=   295.1 mean_len=  93.4 | policy_loss= 0.0004 value_loss=117.7444 entropy=11.2676 | 1.4s
+iter   100 | mean_ep_return=   307.9 mean_len= 103.2 | policy_loss=-0.0001 value_loss=46.8871 entropy=11.1984 | 1.4s
+iter   120 | mean_ep_return=   298.0 mean_len=  98.6 | policy_loss=-0.0027 value_loss=51.3472 entropy=11.0711 | 1.4s
+iter   140 | mean_ep_return=   346.5 mean_len= 115.1 | policy_loss= 0.0358 value_loss=48.5051 entropy=11.0732 | 1.4s
+iter   160 | mean_ep_return=   385.7 mean_len= 123.0 | policy_loss= 0.0125 value_loss=48.3104 entropy=11.0383 | 1.3s
+iter   180 | mean_ep_return=   284.7 mean_len=  88.1 | policy_loss= 0.0075 value_loss=147.0125 entropy=11.1842 | 1.4s
+iter   200 | mean_ep_return=   289.1 mean_len=  89.2 | policy_loss= 0.0037 value_loss=50.9748 entropy=11.2717 | 1.4s
+iter   220 | mean_ep_return=   320.0 mean_len= 103.2 | policy_loss= 0.0353 value_loss=44.3702 entropy=11.2067 | 1.4s
+iter   240 | mean_ep_return=   276.9 mean_len=  88.1 | policy_loss=-0.0009 value_loss=116.4511 entropy=11.4312 | 1.4s
+iter   260 | mean_ep_return=   312.8 mean_len= 100.9 | policy_loss=-0.0042 value_loss=19.2582 entropy=11.6047 | 1.4s
+iter   280 | mean_ep_return=   332.4 mean_len= 104.3 | policy_loss= 0.0022 value_loss=27.1427 entropy=11.7028 | 1.4s
+iter   300 | mean_ep_return=   315.3 mean_len=  98.4 | policy_loss= 0.0103 value_loss=40.1519 entropy=11.7622 | 1.4s
+iter   320 | mean_ep_return=   344.5 mean_len= 108.2 | policy_loss= 0.0044 value_loss=20.9084 entropy=11.8366 | 1.4s
+iter   340 | mean_ep_return=   330.0 mean_len= 103.1 | policy_loss= 0.0011 value_loss=27.8755 entropy=11.8376 | 1.4s
+iter   360 | mean_ep_return=   362.4 mean_len= 112.1 | policy_loss= 0.0212 value_loss=26.6911 entropy=11.7737 | 1.4s
+iter   380 | mean_ep_return=   363.4 mean_len= 112.4 | policy_loss=-0.0012 value_loss=15.0669 entropy=11.8357 | 1.4s
+iter   400 | mean_ep_return=   331.6 mean_len= 103.5 | policy_loss= 0.0100 value_loss=23.9025 entropy=11.8553 | 1.4s
+iter   420 | mean_ep_return=   347.4 mean_len= 106.5 | policy_loss= 0.0102 value_loss=19.3697 entropy=11.9536 | 1.4s
+iter   440 | mean_ep_return=   404.4 mean_len= 124.7 | policy_loss=-0.0002 value_loss=15.1848 entropy=11.9872 | 1.4s
+iter   460 | mean_ep_return=   361.1 mean_len= 111.8 | policy_loss= 0.0119 value_loss=14.5839 entropy=11.8782 | 1.4s
+iter   480 | mean_ep_return=   378.1 mean_len= 120.2 | policy_loss= 0.0107 value_loss=19.2566 entropy=11.6802 | 1.4s
+iter   500 | mean_ep_return=   356.5 mean_len= 111.7 | policy_loss= 0.0065 value_loss=18.6290 entropy=11.5710 | 1.4s
+iter   520 | mean_ep_return=   301.1 mean_len=  95.6 | policy_loss= 0.0136 value_loss=369.6498 entropy=11.4476 | 1.4s
+iter   540 | mean_ep_return=   341.2 mean_len= 110.2 | policy_loss=-0.0029 value_loss=19.4552 entropy=11.2551 | 1.6s
+iter   560 | mean_ep_return=   367.3 mean_len= 116.2 | policy_loss= 0.0034 value_loss=11.6692 entropy=11.2820 | 1.4s
+iter   580 | mean_ep_return=   278.1 mean_len=  92.5 | policy_loss= 0.0129 value_loss=18.6075 entropy=11.2313 | 1.4s
+iter   600 | mean_ep_return=   365.5 mean_len= 116.2 | policy_loss= 0.0022 value_loss=13.5378 entropy=11.2050 | 1.6s
+iter   620 | mean_ep_return=   353.9 mean_len= 115.1 | policy_loss=-0.0014 value_loss=21.3276 entropy=11.0701 | 1.4s
+iter   640 | mean_ep_return=   378.6 mean_len= 123.1 | policy_loss=-0.0027 value_loss=13.3108 entropy=10.9111 | 1.4s
+iter   660 | mean_ep_return=   345.4 mean_len= 112.7 | policy_loss=-0.0022 value_loss=113.6832 entropy=10.7804 | 1.6s
+iter   680 | mean_ep_return=   325.1 mean_len= 101.9 | policy_loss= 0.0053 value_loss=12.8358 entropy=10.9555 | 1.4s
+iter   700 | mean_ep_return=   393.7 mean_len= 134.4 | policy_loss= 0.0052 value_loss=14.2526 entropy=11.0330 | 1.5s
+iter   720 | mean_ep_return=   386.0 mean_len= 119.9 | policy_loss=-0.0017 value_loss=102.2759 entropy=11.0187 | 1.4s
+iter   740 | mean_ep_return=   389.8 mean_len= 128.6 | policy_loss= 0.0023 value_loss=11.8217 entropy=11.1156 | 1.4s
+iter   760 | mean_ep_return=   288.9 mean_len= 101.6 | policy_loss= 0.0077 value_loss=13.3411 entropy=11.0750 | 1.9s
+iter   780 | mean_ep_return=   328.6 mean_len= 110.2 | policy_loss=-0.0014 value_loss=129.7466 entropy=11.0620 | 1.4s
+iter   800 | mean_ep_return=   340.0 mean_len= 111.7 | policy_loss= 0.0029 value_loss= 7.3454 entropy=11.1133 | 1.4s
+iter   820 | mean_ep_return=   380.4 mean_len= 132.6 | policy_loss= 0.0015 value_loss=18.6469 entropy=11.1153 | 1.4s
+iter   840 | mean_ep_return=   433.0 mean_len= 139.4 | policy_loss=-0.0033 value_loss=10.1410 entropy=11.1682 | 1.3s
+iter   860 | mean_ep_return=   330.6 mean_len= 111.2 | policy_loss= 0.0029 value_loss= 6.8874 entropy=11.2893 | 1.3s
+iter   880 | mean_ep_return=   402.0 mean_len= 130.1 | policy_loss= 0.0017 value_loss=11.1976 entropy=11.2125 | 1.4s
+iter   900 | mean_ep_return=   356.3 mean_len= 111.8 | policy_loss= 0.0017 value_loss= 9.9828 entropy=11.3027 | 1.4s
+iter   920 | mean_ep_return=   295.2 mean_len= 105.9 | policy_loss=-0.0015 value_loss=10.9748 entropy=11.2838 | 1.4s
+iter   940 | mean_ep_return=   391.8 mean_len= 122.1 | policy_loss=-0.0016 value_loss= 9.6510 entropy=11.2748 | 1.4s
+iter   960 | mean_ep_return=   367.0 mean_len= 117.7 | policy_loss= 0.0014 value_loss=10.7021 entropy=11.0902 | 1.4s
+iter   980 | mean_ep_return=   351.7 mean_len= 114.5 | policy_loss= 0.0003 value_loss= 9.7458 entropy=11.0760 | 1.6s
+iter  1000 | mean_ep_return=   281.8 mean_len=  90.6 | policy_loss=-0.0025 value_loss=11.2962 entropy=10.9506 | 1.4s
+iter  1020 | mean_ep_return=   331.7 mean_len= 107.5 | policy_loss=-0.0037 value_loss= 5.3969 entropy=10.8545 | 1.5s
+iter  1040 | mean_ep_return=   397.4 mean_len= 133.8 | policy_loss=-0.0030 value_loss= 8.4351 entropy=10.8381 | 1.5s
+iter  1060 | mean_ep_return=   400.2 mean_len= 130.5 | policy_loss=-0.0007 value_loss= 8.5009 entropy=10.7518 | 1.4s
+iter  1080 | mean_ep_return=   330.0 mean_len= 110.4 | policy_loss=-0.0036 value_loss= 9.6168 entropy=10.5666 | 1.5s
+iter  1100 | mean_ep_return=   318.7 mean_len= 108.8 | policy_loss= 0.0028 value_loss=13.4842 entropy=10.5909 | 1.6s
+iter  1120 | mean_ep_return=   306.2 mean_len= 102.4 | policy_loss=-0.0054 value_loss= 8.8866 entropy=10.6603 | 1.4s
+iter  1140 | mean_ep_return=   436.0 mean_len= 140.1 | policy_loss=-0.0006 value_loss= 7.2529 entropy=10.6552 | 1.4s
+iter  1160 | mean_ep_return=   375.0 mean_len= 124.0 | policy_loss= 0.0098 value_loss=14.2527 entropy=10.9076 | 1.4s
+iter  1180 | mean_ep_return=   319.3 mean_len= 107.2 | policy_loss= 0.0037 value_loss=11.2411 entropy=10.8670 | 1.4s
+iter  1200 | mean_ep_return=   310.5 mean_len= 109.0 | policy_loss= 0.0018 value_loss= 6.8774 entropy=10.7170 | 1.4s
+iter  1220 | mean_ep_return=   404.2 mean_len= 135.1 | policy_loss= 0.0015 value_loss=11.7587 entropy=10.5582 | 1.4s
+iter  1240 | mean_ep_return=   326.0 mean_len= 110.3 | policy_loss=-0.0004 value_loss= 5.4200 entropy=10.3524 | 1.4s
+iter  1260 | mean_ep_return=   370.8 mean_len= 123.6 | policy_loss=-0.0006 value_loss= 8.4382 entropy=10.2739 | 1.4s
+iter  1280 | mean_ep_return=   303.3 mean_len= 104.3 | policy_loss=-0.0022 value_loss= 4.2246 entropy=10.2926 | 1.6s
+iter  1300 | mean_ep_return=   360.4 mean_len= 124.9 | policy_loss=-0.0009 value_loss= 5.1463 entropy=10.0894 | 1.4s
+iter  1320 | mean_ep_return=   449.0 mean_len= 157.8 | policy_loss= 0.0001 value_loss= 5.9291 entropy=9.9777 | 1.4s
+iter  1340 | mean_ep_return=   323.6 mean_len= 107.6 | policy_loss= 0.0086 value_loss= 6.0865 entropy=9.7634 | 1.4s
+iter  1360 | mean_ep_return=   488.2 mean_len= 158.2 | policy_loss= 0.0024 value_loss= 4.8146 entropy=9.6501 | 1.4s
+iter  1380 | mean_ep_return=   457.1 mean_len= 147.6 | policy_loss=-0.0005 value_loss= 5.7366 entropy=9.6941 | 1.4s
+iter  1400 | mean_ep_return=   368.1 mean_len= 116.3 | policy_loss= 0.0008 value_loss= 3.7643 entropy=9.6080 | 1.4s
+iter  1420 | mean_ep_return=   360.3 mean_len= 114.8 | policy_loss= 0.1423 value_loss= 2.5272 entropy=9.6881 | 1.4s
+iter  1440 | mean_ep_return=   326.9 mean_len= 112.1 | policy_loss= 0.0027 value_loss= 8.8721 entropy=9.5673 | 1.5s
+iter  1460 | mean_ep_return=   371.0 mean_len= 116.9 | policy_loss= 0.0107 value_loss= 8.1526 entropy=9.5971 | 1.3s
+iter  1480 | mean_ep_return=   410.9 mean_len= 131.9 | policy_loss=-0.0042 value_loss=13.1508 entropy=9.5509 | 1.4s
+iter  1500 | mean_ep_return=   332.1 mean_len= 104.1 | policy_loss= 0.0141 value_loss= 8.4290 entropy=9.5195 | 1.4s
+saved: checkpoints/ppo_stand_final.pt
